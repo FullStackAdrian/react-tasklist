@@ -1,7 +1,7 @@
 // hooks/useTaskForm.js
 import { useForm } from 'react-hook-form';
 
-export const useTaskForm = () => {
+function useTaskForm() {
   const {
     register,           // Para conectar los inputs
     handleSubmit,       // Para manejar el envío
@@ -16,3 +16,5 @@ export const useTaskForm = () => {
     errors
   };
 };
+
+export default useTaskForm;
