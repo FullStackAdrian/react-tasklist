@@ -1,28 +1,34 @@
 import React from "react";
 
-function TaskForm() {
-  return (
-    <div>
-      <form id="form-tasca">
-        <label htmlFor="nom-tasca">Nom de la tasca</label>
-        <input id="nom-tasca" name="nom" type="text" />
+function TaskForm({ register, errors, onSubmit }) {
+    return (
+        <form id="form-tasca" onSubmit={onSubmit}>
+            <label htmlFor="task-name">Nom de la tasca</label>
+            <input
+                id="task-name"
+                type="text"
+                {...register("nom", {
+                    required: "El nom és obligatori",
+                })}
+            />
+            {errors.nom && <p>{errors.nom.message}</p>}
 
-        <label htmlFor="categoria-tasca">Categoria</label>
-        <select id="categoria-tasca" name="categoria">
-          <option value="">-- Tria categoria --</option>
-          <option value="casa">Casa</option>
-          <option value="feina">Feina</option>
-          <option value="estudis">Estudis</option>
-        </select>
+            <label htmlFor="task-category">Categoria</label>
+            <select id="task-category" {...register("category", { required: "La categoria es obligatoria." })}>
+                <option value="">-- Tria categoria --</option>
+                <option value="casa">Casa</option>
+                <option value="feina">Feina</option>
+                <option value="estudis">Estudis</option>
+            </select>
+            {errors.category && <p>{errors.category.message}</p>}
 
-        <label htmlFor="data-tasca">Data</label>
-        <input id="data-tasca" name="data" type="date" />
+            <label htmlFor="task-deadline">Data</label>
+            <input id="task-deadline" type="date" {...register("date", { required: "La data es obligatoria." })} />
+            {errors.date && <p>{errors.date.message}</p>}
 
-        <button type="submit">Afegir tasca</button>
-      </form>      
-    </div>
-  );
+            <button type="submit">Afegir tasca</button>
+        </form>
+    );
 }
 
 export default TaskForm;
-

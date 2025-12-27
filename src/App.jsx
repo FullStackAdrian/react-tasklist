@@ -1,11 +1,9 @@
 import './App.css'
-import TaskForm from './features/TaskList/ui/TaskForm'
+import TaskFormComponent from './features/TaskList/components/TaskFormComponent.jsx'
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-    <TaskForm/>
+    <TaskFormComponent></TaskFormComponent>
     </>
   )
 }
