@@ -1,7 +1,6 @@
 import React from "react";
 import TaskForm from "../ui/TaskForm.jsx";
-import  useTaskForm  from "../hooks/useTaskForm.jsx";
-import  useTaskList  from "../hooks/useTaskList.jsx"
+import useTaskForm from "../hooks/useTaskForm.jsx";
 
 function TaskFormComponent({ onAddTask }) {
     const { register, handleSubmit, reset, errors } = useTaskForm();
