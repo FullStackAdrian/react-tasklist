@@ -1,13 +1,11 @@
 import "./App.css";
-import TaskFormComponent from "./features/TaskList/components/TaskFormComponent.jsx";
-import TaskListComponent from "./features/TaskList/components/TaskListComponent.jsx";
+import TaskListPage from "./features/TaskList/pages/TaskList";
 
 function App() {
-    const { tasks } = useTaskList();
+
     return (
         <>
-            <TaskFormComponent />
-            <TaskListComponent />
+         <TaskListPage/>
         </>
     );
 }
