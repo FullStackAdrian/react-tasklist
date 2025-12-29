@@ -5,7 +5,7 @@ function TaskList({ tasks }) {
         <ul id="llistaTasques">
             {tasks.map((task, index) => (
                 <li key={index}>
-                    <strong>{task.nom}</strong> — {task.categoria} — {task.data}
+                    <strong>{task.nom}</strong> — {task.category} — {task.date}
                 </li>
             ))}
         </ul>
