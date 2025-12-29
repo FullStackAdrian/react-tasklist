@@ -1,18 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-function useTaskList(data) {
+function useTaskList() {
     const [tasks, setTasks] = useState([]);
-    const parseData = (data) => {
-
-    };
+    const parseData = (data) => {};
     const onAddTask = (data) => {
-        const array = tasks;
-        array.push(data);
-        setTasks(array);
+        setTasks((prev) => [...prev, data]);
     };
 
     return { onAddTask, tasks };
-};
+}
 
 export default useTaskList;
