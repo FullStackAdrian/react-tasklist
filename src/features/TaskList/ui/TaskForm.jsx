@@ -1,20 +1,12 @@
-import React from "react";
-
 function TaskForm({ register, errors, onSubmit }) {
     return (
         <form id="form-tasca" onSubmit={onSubmit}>
             <label htmlFor="task-name">Nom de la tasca</label>
-            <input
-                id="task-name"
-                type="text"
-                {...register("nom", {
-                    required: "El nom és obligatori",
-                })}
-            />
+            <input id="task-name" type="text" {...register("nom")} />
             {errors.nom && <p>{errors.nom.message}</p>}
 
             <label htmlFor="task-category">Categoria</label>
-            <select id="task-category" {...register("category", { required: "La categoria es obligatoria." })}>
+            <select id="task-category" {...register("category")}>
                 <option value="">-- Tria categoria --</option>
                 <option value="casa">Casa</option>
                 <option value="feina">Feina</option>
@@ -23,7 +15,7 @@ function TaskForm({ register, errors, onSubmit }) {
             {errors.category && <p>{errors.category.message}</p>}
 
             <label htmlFor="task-deadline">Data</label>
-            <input id="task-deadline" type="date" {...register("date", { required: "La data es obligatoria." })} />
+            <input id="task-deadline" type="date" {...register("date")} />
             {errors.date && <p>{errors.date.message}</p>}
 
             <button type="submit">Afegir tasca</button>
