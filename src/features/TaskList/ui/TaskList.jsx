@@ -1,13 +1,10 @@
-import React from "react";
+import TaskItem from "./TaskItem.jsx";
 
 function TaskList({ tasks }) {
     return (
         <ul id="llistaTasques">
             {tasks.map((task, index) => (
-                <li key={index}>
-                    <strong>{task.nom}</strong> — {task.category}  {task.urgent &&  <span> — Urgent</span>} 
-                    {task.important && <span> — Important</span>}— {task.date}
-                </li>
+                <TaskItem key={index} task={task} index={index} />
             ))}
         </ul>
     );
