@@ -14,6 +14,12 @@ function TaskForm({ register, errors, onSubmit }) {
             </select>
             {errors.category && <p>{errors.category.message}</p>}
 
+            <label htmlFor="is-urgent">Es urgent: </label>
+            <input type="checkbox" name="is-urgent" id="is-urgent" {...register("urgent")} />
+            
+            <label htmlFor="is-important">Es important: </label>
+            <input type="checkbox" name="is-important" id="is-important" {...register("important")} />
+            
             <label htmlFor="task-deadline">Data</label>
             <input id="task-deadline" type="date" {...register("date")} />
             {errors.date && <p>{errors.date.message}</p>}
