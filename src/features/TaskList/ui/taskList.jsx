@@ -1,4 +1,4 @@
-import TaskItem from "./TaskItem.jsx";
+import TaskItem from "./taskItem.jsx";
 
 function TaskList({ tasks }) {
     return (

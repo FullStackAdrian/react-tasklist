@@ -1,4 +1,4 @@
-import TaskList from "../ui/TaskList.jsx";
+import TaskList from "../ui/taskList.jsx";
 
 function TaskListComponent({ tasks }) {
 

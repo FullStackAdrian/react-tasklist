@@ -1,5 +1,5 @@
-import TaskFormComponent from "../components/TaskFormComponent.jsx";
-import TaskListComponent from "../components/TaskListComponent.jsx";
+import TaskFormComponent from "../components/taskFormComponent.jsx";
+import TaskListComponent from "../components/taskListComponent.jsx";
 import useTaskList from "../hooks/useTaskList.jsx";
 
 function TaskListPage() {
