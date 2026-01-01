@@ -1,6 +1,6 @@
 function TaskForm({ register, errors, onSubmit }) {
     return (
-        <form id="form-tasca" onSubmit={onSubmit}>
+        <form id="task-form" onSubmit={onSubmit}>
             <label htmlFor="task-name">Nom de la tasca</label>
             <input id="task-name" type="text" {...register("nom")} />
             {errors.nom && <p>{errors.nom.message}</p>}
