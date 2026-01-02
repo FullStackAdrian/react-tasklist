@@ -11,7 +11,12 @@ function useTaskList() {
         setTasks((prev) => sortTasks([...prev, data]));
     };
 
-    return { onAddTask, tasks };
+    const onFilterTasks = (list, text) => {
+        if (!text) return list;
+        return list.filter((task) => task.nom.toLowerCase().includes(text.toLowerCase()));
+    };
+
+    return { onAddTask, onFilterTasks, tasks };
 }
 
 export default useTaskList;
