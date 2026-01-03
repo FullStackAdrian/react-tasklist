@@ -1,9 +1,9 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { filterTaskBarSchema } from '../schema/filterTaskBarSchema.jsx';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { filterTaskBarSchema } from "../schema/filterTaskBarSchema.jsx";
 
-function useFilterTask() {
-const {
+function useFilterForm() {
+    const {
         register,
         handleSubmit,
         reset,
@@ -16,4 +16,4 @@ const {
     return { register, handleSubmit, reset, errors };
 }
 
-export default useFilterTask;
+export default useFilterForm;

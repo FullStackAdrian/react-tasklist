@@ -1,16 +1,16 @@
 import TaskFormComponent from "../components/taskFormComponent.jsx";
 import TaskListComponent from "../components/taskListComponent.jsx";
-import FilterTaskBarComponent from "../components/filterTaskBarComponent.jsx";
+import FilterBarFormComponent from "../components/filterBarFormComponent.jsx";
 import useTaskList from "../hooks/useTaskList.jsx";
 
 function TaskListPage() {
-    const { onAddTask, onFilterTasks, tasks } = useTaskList();
+    const { tasks, onAddTask, applyFilter : onFilter  } = useTaskList();
 
     return (
-        <>  
-            <FilterTaskBarComponent onSubmit={onFilterTasks}/>
-            <TaskFormComponent onAddTask={ onAddTask } />
-            <TaskListComponent tasks={ tasks } />
+        <>
+            <FilterBarFormComponent onFilter={onFilter} />
+            <TaskFormComponent onAddTask={onAddTask} />
+            <TaskListComponent tasks={tasks} />
         </>
     );
 }
