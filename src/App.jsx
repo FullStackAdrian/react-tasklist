@@ -11,10 +11,8 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Ruta pública de login */}
           <Route path="/login" element={<LoginPage />} />
 
-          {/* Ruta protegida: mantiene tu MainLayout y TaskListPage tal cual */}
           <Route
             path="/"
             element={
@@ -26,8 +24,7 @@ function App() {
             }
           />
 
-          {/* Redirigir cualquier otra ruta a la raíz */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/login" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
