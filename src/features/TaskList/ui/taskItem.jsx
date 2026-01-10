@@ -38,10 +38,13 @@ function TaskItem({ task, index, onToggleComplete, onRemoveTask}) {
                 
                 <button 
                     onClick={() => onToggleComplete(index)}
-                    className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap"
+                    className={`px-4 py-2 text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${
+                        task.completed 
+                            ? 'bg-yellow-600 hover:bg-yellow-700' 
+                            : 'bg-green-600 hover:bg-green-700'
+                    }`}
                 >
-                    
-                    Completar
+                    {task.completed ? 'Completat' : 'Completar'}
                 </button>
 
                 <button 
