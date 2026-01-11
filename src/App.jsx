@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AuthProvider from "./features/Auth/context/authContext.jsx";
 import PrivateRoute from "./features/Auth/components/privateRoute.jsx";
-import AuthLayout from "./layouts/authLayout.jsx";
-import MainLayout from "./layouts/mainLayout.jsx";
+import AuthLayout from "./shared/layouts/authLayout.jsx";
+import MainLayout from "./shared/layouts/mainLayout.jsx";
 import TaskListPage from "./features/TaskList/pages/taskListPage.jsx";
 import LoginPage from "./features/Auth/pages/loginPage.jsx";
 
