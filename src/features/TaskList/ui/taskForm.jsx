@@ -9,7 +9,7 @@ import SubmitButton from "../../../shared/ui/form/submitButton";
 
 function TaskForm({ register, errors, onSubmit }) {
     return (
-        <FormContainer id="task-form" title="Crear Nova Tasca">
+        <FormContainer id="task-form" title="Crear Nova Tasca" onSubmit={onSubmit}>
             <div className="space-y-4">
                 <TextInput
                     name="taskName"
