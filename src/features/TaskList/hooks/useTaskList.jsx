@@ -28,9 +28,11 @@ function useTaskList() {
         setFilter(filter);
     };
 
+    const resetFilter = () => setFilter("");
+
     const filteredList = useFilteredList(tasks, filter);
 
-    return { tasks: filteredList, onAddTask, removeTask, toggleComplete, applyFilter };
+    return { tasks: filteredList, onAddTask, removeTask, toggleComplete, applyFilter, resetFilter };
 }
 
 export default useTaskList;

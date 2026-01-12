@@ -3,7 +3,7 @@ import TextInput from "../../../shared/ui/form/inputs/textInput";
 import SubmitButton from "../../../shared/ui/form/submitButton";
 import Button from "../../../shared/ui/button";
 
-function FilterTaskBar({ register, errors, onSubmit, resetFilter }) {
+function FilterTaskBar({ register, errors, onSubmit, onResetFilter }) {
     return (
         <FormContainer id="filter-form" title="" onSubmit={onSubmit}>
             <div className="flex gap-3 items-center w-full">
@@ -18,7 +18,7 @@ function FilterTaskBar({ register, errors, onSubmit, resetFilter }) {
                 </div>
                 <div className="flex items-center gap-2 shrink-0 whitespace-nowrap">
                     <SubmitButton text="filter" className="h-10" />
-                    <Button text="reset filter" onClick={() => resetFilter()} variant="secondary" className="h-10" />
+                    <Button text="reset filter" onClick={() => onResetFilter()} variant="secondary" className="h-10" />
                 </div>
             </div>
         </FormContainer>
