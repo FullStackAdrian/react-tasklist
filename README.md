@@ -22,7 +22,46 @@ Objetivos
 
 ## Funcionamiento del programa y capturas
 
-todo 
+### Login
+Primero haces login. Las credenciales están hardcodeadas dentro del formulario.
+
+![Login](./docs/images/login.png)
+
+### Vista general
+La aplicación muestra dos paneles principales: el formulario de creación a la izquierda y la lista de tareas a la derecha.
+
+![Vista general](./docs/images/vista-general.png)
+
+### Crear tareas
+Puedes crear nuevas tareas rellenando el formulario. Incluye nombre, categoría, prioridad, fecha límite y descripción.
+
+![Crear tarea](./docs/images/crear-tarea.png)
+
+### Filtrar tareas
+El buscador permite filtrar tareas por nombre, para resetear le das a reset filter .
+
+![Filtrar tareas](./docs/images/filtrar.png)
+![alt text](./docs/images/filtrar-2.png)
+
+### Gestionar tareas
+Cada tarea muestra badges de categoría, prioridad y estado. Puedes completarlas o eliminarlas con los botones correspondientes.
+
+![Gestionar tareas](./docs/images/gestionar.png)
+
+### Marcar como urgente/importante
+Las tareas se pueden marcar como urgentes, importantes al crearlas y se ordenan en base a la matriz de eisenhower.
+
+![Urgente e importante](./docs/images/urgente-importante.png)
+
+### Completar tareas
+Al completar una tarea, cambia su estado visualmente.
+
+![Completar tarea](./docs/images/completar.png)
+
+### Eliminar tareas
+Puedes eliminar tareas permanentemente con el botón eliminar.
+
+![Eliminar tarea](./docs/images/eliminar.png)
 
 ## Stack tecnológico
 
