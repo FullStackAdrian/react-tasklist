@@ -43,105 +43,37 @@ RHF hace uso de 3 metodos importantes para gestionar el uso de este.
 
 A continuación unos casos de uso como ejemplo basico. 
 
-1. Asi importas los hooks de RHF. 
-```js
-const { register, handleSubmit, formState } = useForm({ defaultValues: { title: '' } });
-```
+## Integración rápida: React Hook Form + Zod (pequeño recordatorio)
 
-2. Registrar inputs (sin useState por campo):
+En el formulario usa el `zodResolver` para delegar la validación a Zod. Ejemplo mínimo (fragmento JS):
 
 ```js
-<input {...register('title', { required: 'Requerido' })} />
-```
-
-3. Manejar submit:
-
-```js
-<form onSubmit={handleSubmit(data => onSave(data))}></form>
-```
-
-4. Mostrar errores:
-
-```js
-{formState.errors.title && <span>{formState.errors.title.message}</span>}
-```
-
-5. Manipulación programática:
-
-```js
-reset(values); // recarga valores
-setValue('title', 'nuevo');
-const all = getValues();
-```
-
-6. Inputs controlados / terceros (usar Controller):
-
-```js
-<Controller name="prio" control={control} render={({ field }) => <Select {...field} />} />
-```
-
-
-## Que es Zod ? 
-
-Zod es un framework de declaracion y validacion de esquemas. Resumido te permite definir como deben ser tus datos ( en un schema ) y luego validar que los datos reales coinciden. 
-
->[!note] Ojo! 
-> Validar funciona correctamente, pero zod puede no llegar a sanitizar todo por completo, es mejor sanitizar antes de enviar los datos al servidor.
-
-## Instalar
-
-```bash
-npm install react-hook-form zod @hookform/resolvers
-```
-
-## Conceptos clave (rapido)
-
-- Schema básico: z.string(), z.number(), z.object({...}), z.array(...)
-- Transformaciones: .transform()
-- Refinamientos personalizados: .refine()
-- Preprocesos: z.preprocess()
-- Parsing:
-  - parse(value) → devuelve dato validado o lanza ZodError
-  - safeParse(value) → devuelve { success: true, data } o { success: false, error }
-  - parseAsync / safeParseAsync para validadores async
-
-### Ejemplos pequeños
-
-- Schema básico:
-
-``` js
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
+// schema (ejemplo)
 const TaskSchema = z.object({
-  title: z.string().min(1, 'Título requerido').max(120),
+  title: z.string().min(1, 'Título requerido'),
   notes: z.string().optional(),
-  completed: z.boolean().default(false),
-  priority: z.enum(['low', 'medium', 'high']).default('medium'),
-});
+})
+
+// en tu componente / hook de formulario
+const { register, handleSubmit, formState } = useForm({
+  resolver: zodResolver(TaskSchema),
+  defaultValues: { title: '', notes: '' }
+})
 ```
 
+Dónde ubicar la lógica del formulario:
+- Extrae la lógica a un hook dentro de la feature:
+  - `features/TaskList/hooks/useTaskForm.jsx` (useForm + submit + reset)
+- Coloca el schema en `features/TaskList/schema/taskFormSchema.jsx`.
 
-- uso con React Hook Form (JS)
 
-```js
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-// TaskSchema definido arriba
 
-function MyForm() {
-  const { register, handleSubmit, formState } = useForm({
-    resolver: zodResolver(TaskSchema),
-    defaultValues: { title: '', notes: '' }
-  });
-
-  const onSubmit = data => console.log(data);
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register('title')} />
-      {formState.errors.title && <span>{formState.errors.title.message}</span>}
-      <button type="submit">Enviar</button>
-    </form>
-  );
-}
-```
-
+>[!note] **Notas rápidas**
+>- En JS no usas `z.infer` (es TypeScript). Simplemente parseas y accedes a los datos validados.
+>- Para APIs/servicios prefieres `safeParse` y manejar errores sin lanzar excepciones.
+>- Usa `.preprocess()` para normalizar strings/fechas/números antes de validar.
+>- Para seguridad, complementa Zod con sanitización adicional donde haga falta (escape HTML, trim, etc.).
